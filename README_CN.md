@@ -20,6 +20,29 @@
 2. 在文件中添加包含 `#include "AIGCJson.hpp"`
 3. 在类 | 结构体中添加成员注册接口 `AIGC_JSON_HELPER(xxx,yyy,zzz)`
 
+## 🔨 CMake 构建与集成
+
+本项目提供 CMake 配置，便于构建测试和集成到其他工程。
+
+**构建并运行测试：**
+
+```bash
+cd AIGCJson
+mkdir build && cd build
+cmake .. -DAIGCJSON_BUILD_TESTS=ON
+cmake --build .
+ctest --output-on-failure
+```
+
+**集成到你的 CMake 项目（推荐）：**
+
+```cmake
+add_subdirectory(path/to/AIGCJson)
+target_link_libraries(your_target PRIVATE AIGCJson)
+```
+
+无需单独依赖 rapidjson，头文件已包含在 `include/rapidjson` 中。若不需要编译测试，可加 `-DAIGCJSON_BUILD_TESTS=OFF`。
+
 ## 🤖 样例代码
 
 ```cpp

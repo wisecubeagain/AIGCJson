@@ -20,6 +20,29 @@
 2. Add include line `#include "AIGCJson.hpp"`
 3. Add class-members registered line `AIGC_JSON_HELPER(xxx,yyy,zzz)`
 
+## 🔨 CMake Build and Integration
+
+This project provides CMake support for building tests and integrating into other projects.
+
+**Build and run tests:**
+
+```bash
+cd AIGCJson
+mkdir build && cd build
+cmake .. -DAIGCJSON_BUILD_TESTS=ON
+cmake --build .
+ctest --output-on-failure
+```
+
+**Integrate into your CMake project (recommended):**
+
+```cmake
+add_subdirectory(path/to/AIGCJson)
+target_link_libraries(your_target PRIVATE AIGCJson)
+```
+
+No separate rapidjson dependency is needed; headers are included under `include/rapidjson`. Use `-DAIGCJSON_BUILD_TESTS=OFF` if you do not want to build tests.
+
 ## 🤖 Example
 
 ```cpp
